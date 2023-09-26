@@ -1,10 +1,10 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
+import AuthButton from './AuthButton'
 
 export default function NavBar() {
   return (
-    <header className='bg-primary text-white'>
-      <nav className='max-w-7xl m-auto flex py-2 justify-between items-center'>
+    <header className='bg-primary text-white '>
+      <nav className='max-w-7xl m-auto flex p-2 justify-between items-center h-16'>
         <ul className='flex gap-3'>
           <li>
             <Link href='/'>Overview</Link>
@@ -19,10 +19,7 @@ export default function NavBar() {
             <Link href='/'>Settings</Link>
           </li>
         </ul>
-        <Avatar>
-          <AvatarImage src='https://github.com/shadcn.png' alt='@shadcn' />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        <AuthButton />
       </nav>
     </header>
   )
