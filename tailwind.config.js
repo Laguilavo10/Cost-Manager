@@ -17,18 +17,21 @@ module.exports = {
     },
     extend: {
       colors: {
-        'gray-custom': '#898da1',
-        border: 'hsl(var(--border))',
+        // 'gray-custom': '#898da1',
+        border: '#27272a',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'var(--primary)',
+          // DEFAULT: '#1a202c',
+          DEFAULT: '#09090b',
+          text: '#ffffff',
           foreground: 'hsl(var(--primary-foreground))'
         },
         secondary: {
-          DEFAULT: 'var(--secondary)',
+          DEFAULT: '#21c48a',
+          text: '#7e7e85',
           foreground: 'hsl(var(--secondary-foreground))'
         },
         destructive: {

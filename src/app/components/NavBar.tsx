@@ -3,8 +3,8 @@ import AuthButton from './AuthButton'
 
 export default function NavBar() {
   return (
-    <header className='bg-primary text-white '>
-      <nav className='max-w-7xl m-auto flex p-2 justify-between items-center h-16'>
+    <header className='text-white border-b-2 bg-primary border-border'>
+      <nav className='flex items-center justify-between h-16 p-2 m-auto max-w-7xl'>
         <ul className='flex gap-3'>
           <li>
             <Link href='/'>Overview</Link>
