@@ -40,7 +40,7 @@ export function AuthForm({ className, ...props }: UserAuthFormProps) {
             />
           </div>
           <Button disabled={isLoading}>
-            {isLoading && <Spinner className='mr-2 h-4 w-4 animate-spin' />}
+            {isLoading && <Spinner className='w-4 h-4 mr-2 animate-spin' />}
             Sign In with Email
           </Button>
         </div>
@@ -50,16 +50,16 @@ export function AuthForm({ className, ...props }: UserAuthFormProps) {
           <span className='w-full border-t' />
         </div>
         <div className='relative flex justify-center text-xs uppercase'>
-          <span className='bg-background px-2 text-muted-foreground'>
+          <span className='px-2 bg-background text-muted-foreground'>
             Or continue with
           </span>
         </div>
       </div>
       <Button variant='outline' type='button' disabled={isLoading}>
         {isLoading ? (
-          <Spinner className='mr-2 h-4 w-4 animate-spin' />
+          <Spinner className='w-4 h-4 mr-2 animate-spin' />
         ) : (
-          <GitHub className='mr-2 h-4 w-4' />
+          <GitHub className='w-4 h-4 mr-2' />
         )}{' '}
         Github
       </Button>
