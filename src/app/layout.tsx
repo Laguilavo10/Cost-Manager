@@ -18,10 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} bg-primary text-white`}>
+      <body className={`${inter.className} bg-primary text-white dark`}>
         <NavBar />
         <main className='w-full p-8 m-auto max-w-7xl'>{children}</main>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   )
