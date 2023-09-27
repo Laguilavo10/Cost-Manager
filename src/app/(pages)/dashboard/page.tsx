@@ -1,4 +1,7 @@
 import CardsDashboard from '@/components/CardsDashboard'
+import Overview from '@/components/Overview'
+import NewMovement from '@/components/NewMovement'
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -6,8 +9,8 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
-import { TabsContent, Tabs, TabsTrigger, TabsList } from '@/components/ui/tabs'
-import { BanknotesIcon } from '@heroicons/react/24/solid'
+// import { TabsContent, Tabs, TabsTrigger, TabsList } from '@/components/ui/tabs'
+import { BanknotesIcon, PlusIcon } from '@heroicons/react/24/solid'
 
 export default function Dashboard() {
   const cardData = [
@@ -80,7 +83,15 @@ export default function Dashboard() {
   ]
   return (
     <section className='flex flex-col gap-4'>
-      <h1 className='text-3xl font-bold tracking-tight'>Dashboard</h1>
+      <div className='flex justify-between w-full'>
+        <h1 className='text-3xl font-bold tracking-tight'>Dashboard</h1>
+        <NewMovement>
+          <Button className='flex gap-2'>
+            <PlusIcon className='h-5' />
+            New Movement
+          </Button>
+        </NewMovement>
+      </div>
       {/* <Tabs defaultValue='overview' className='space-y-4 '>
         <TabsList>
           <TabsTrigger value='overview'>Overview</TabsTrigger>
@@ -94,36 +105,36 @@ export default function Dashboard() {
             Notifications
           </TabsTrigger>
         </TabsList> */}
-        {/* <TabsContent value='overview' className='space-y-4'> */}
-          <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
-            {cardData.map(({ title, svgPath, value, description }, index) => (
-              <CardsDashboard
-                key={index}
-                title={title}
-                svg={svgPath}
-                value={value}
-                description={description}
-              />
-            ))}
-          </div>
-          <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
-            <Card className='col-span-4'>
-              <CardHeader>
-                <CardTitle>Overview</CardTitle>
-              </CardHeader>
-              <CardContent className='pl-2'>{/* <Overview /> */}</CardContent>
-            </Card>
-            <Card className='col-span-3'>
-              <CardHeader>
-                <CardTitle>Recent Sales</CardTitle>
-                <CardDescription>
-                  You made 265 sales this month.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>{/* <RecentSales /> */}</CardContent>
-            </Card>
-          </div>
-        {/* </TabsContent> */}
+      {/* <TabsContent value='overview' className='space-y-4'> */}
+      <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
+        {cardData.map(({ title, svgPath, value, description }, index) => (
+          <CardsDashboard
+            key={index}
+            title={title}
+            svg={svgPath}
+            value={value}
+            description={description}
+          />
+        ))}
+      </div>
+      <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
+        <Card className='col-span-4'>
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+          </CardHeader>
+          <CardContent className='pl-2'>
+            <Overview />
+          </CardContent>
+        </Card>
+        <Card className='col-span-3'>
+          <CardHeader>
+            <CardTitle>Recent Sales</CardTitle>
+            <CardDescription>You made 265 sales this month.</CardDescription>
+          </CardHeader>
+          <CardContent>{/* <RecentSales /> */}</CardContent>
+        </Card>
+      </div>
+      {/* </TabsContent> */}
       {/* </Tabs> */}
     </section>
   )
