@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from '@/components/NavBar'
 import { Footer } from './components/Footer'
+import MaxWidthWrapper from './components/MaxWidthWrapper'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} bg-primary text-white dark`}>
+      <body
+        className={`${inter.className} bg-primary text-white dark overflow-x-hidden`}
+      >
         <NavBar />
-        <main className='w-full p-8 m-auto max-w-7xl'>{children}</main>
+        <MaxWidthWrapper>
+          <main>{children}</main>
+        </MaxWidthWrapper>
         <Footer />
       </body>
     </html>
