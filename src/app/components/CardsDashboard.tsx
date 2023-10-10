@@ -10,7 +10,7 @@ interface Props {
   title: string
   svg: React.ReactNode
   value: string
-  description: string
+  description?: string
 }
 export default function CardsDashboard({
   title,
