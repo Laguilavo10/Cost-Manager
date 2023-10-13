@@ -4,14 +4,12 @@ import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 import { Button } from './ui/button'
 import { cn } from '@/lib/utils'
 import { Calendar } from './ui/calendar'
-import type { DaySelectionMode } from 'react-day-picker'
-// import { Popover } from ''
 interface Props {
   date: Date
-  handleDate: any
-  type?: DaySelectionMode
+  handleDate: React.Dispatch<React.SetStateAction<Date>>
 }
-export default function DatePicker({ date, handleDate, type }: Props) {
+
+export default function DatePicker({ date, handleDate }: Props) {
   return (
     <div className={cn('grid gap-2 ')}>
       <Popover>
@@ -33,10 +31,9 @@ export default function DatePicker({ date, handleDate, type }: Props) {
           <Calendar
             initialFocus
             mode={'single'}
-            // defaultMonth={date?.from}
             selected={date}
+            // @ts-expect-error idk
             onSelect={handleDate}
-            // numberOfMonths={1}
           />
         </PopoverContent>
       </Popover>

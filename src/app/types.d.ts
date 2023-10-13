@@ -10,3 +10,22 @@ export enum MethodPayment {
   NEQUI = 4,
   DAVIPLATA = 5
 }
+
+export interface Movement {
+  idMovement: string
+  userId: string
+  typeId: TypeMovement
+  createdAt: Date | string
+  description: string
+  value: number
+  methodPaymentId: MethodPayment
+}
+
+export interface Balance {
+  idBalance: number
+  userId: string
+  month: number | string
+  year: number
+  earnings?: number
+  expenses?: number
+}

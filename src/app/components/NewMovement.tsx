@@ -51,7 +51,7 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
       }
       toast.success('Movimiento registrado correctamente')
       formRef.current?.reset()
-      setDate(new Date())
+      // setDate(new Date())
       // dialogClose()
     } catch (error) {
       console.log(error)
@@ -122,7 +122,7 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
   )
 }
 
-const InputForm = ({
+export const InputForm = ({
   children,
   label,
   className
