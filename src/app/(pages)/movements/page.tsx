@@ -32,7 +32,7 @@ export default function Movements() {
               className={cn(
                 'relative overflow-x-hidden cursor-pointer',
                 currentMonth === index &&
-                  'border border-primary-text rounded-md'
+                  'border border-secondary rounded-md'
               )}
               key={index + 1}
             >

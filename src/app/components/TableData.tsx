@@ -7,131 +7,18 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table'
-import { EllipsisVerticalIcon as OptionsIcon } from '@heroicons/react/24/solid'
-const invoices = [
-  {
-    invoice: 'INV001',
-    paymentStatus: 'Paid',
-    totalAmount: '$250.00',
-    paymentMethod: 'Credit Card'
-  },
-  {
-    invoice: 'INV002',
-    paymentStatus: 'Pending',
-    totalAmount: '$150.00',
-    paymentMethod: 'PayPal'
-  },
-  {
-    invoice: 'INV003',
-    paymentStatus: 'Unpaid',
-    totalAmount: '$350.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV004',
-    paymentStatus: 'Paid',
-    totalAmount: '$450.00',
-    paymentMethod: 'Credit Card'
-  },
-  {
-    invoice: 'INV005',
-    paymentStatus: 'Paid',
-    totalAmount: '$550.00',
-    paymentMethod: 'PayPal'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV006',
-    paymentStatus: 'Pending',
-    totalAmount: '$200.00',
-    paymentMethod: 'Bank Transfer'
-  },
-  {
-    invoice: 'INV007',
-    paymentStatus: 'Unpaid',
-    totalAmount: '$300.00',
-    paymentMethod: 'Credit Card'
-  }
-]
+import { cn } from '@/lib/utils'
+import { TypeMovement, type Movement, MethodPayment } from '@/types.d'
+import OptionsRow from './OptionsRow'
+import { formatNumberAsCurrency } from '@/lib/formatNumberAsCurrency'
 
-export default function TableData() {
+interface Props {
+  data: Movement[]
+}
+
+export default function TableData({ data }: Props) {
+  console.log(data)
+
   return (
     <Table className='overflow-y-auto'>
       <TableCaption>A list of your recent costs.</TableCaption>
@@ -145,19 +32,40 @@ export default function TableData() {
           <TableHead className='w-[10px]'></TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody >
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className='font-medium'>{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell>description</TableCell>
-            <TableCell className='text-right'>{invoice.totalAmount}</TableCell>
-            <TableCell className='text-right'>
-              <OptionsIcon className='w-4' />
-            </TableCell>
-          </TableRow>
-        ))}
+      <TableBody>
+        {data?.map(
+          ({ createdAt, typeId, value, methodPaymentId, idMovement }) => (
+            <TableRow key={idMovement}>
+              <TableCell className='font-medium'>
+                {new Date(createdAt).toLocaleString('es-CO', {
+                  day: 'numeric',
+                  month: 'numeric',
+                  year: 'numeric'
+                })}
+              </TableCell>
+              <TableCell>
+                <span
+                  className={cn(
+                    'p-2  rounded-full border border-transparent font-semibold ',
+                    typeId === 1
+                      ? 'bg-secondary/30 text-secondary'
+                      : 'bg-red-700/30 text-red-600'
+                  )}
+                >
+                  {TypeMovement[typeId]}
+                </span>
+              </TableCell>
+              <TableCell>{MethodPayment[methodPaymentId]}</TableCell>
+              <TableCell>description</TableCell>
+              <TableCell className='text-right'>
+                {formatNumberAsCurrency(value)}
+              </TableCell>
+              <TableCell className='text-right'>
+                <OptionsRow id={idMovement} />
+              </TableCell>
+            </TableRow>
+          )
+        )}
       </TableBody>
     </Table>
   )
