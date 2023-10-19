@@ -1,6 +1,5 @@
 import { API_URL } from '@/constants/const'
 import type { TypeMovement, MethodPayment } from '@/types'
-
 export const registerMovement = async ({
   date,
   typeMovement,

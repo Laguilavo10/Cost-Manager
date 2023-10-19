@@ -22,10 +22,11 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-import { registerMovement } from '@/services/registerMovement'
+// import { registerMovement } from '@/services/registerMovement'
 import type { MethodPayment, TypeMovement } from '@/types'
 import { toast } from 'sonner'
 import { Form } from './Form'
+import postMovementAction from '@/actions/postMovementAction'
 
 export default function NewMovement({ children }: React.PropsWithChildren) {
   const [date, setDate] = useState(new Date())
@@ -42,11 +43,10 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
       description: formData.get('description') as string
     }
     try {
-      const response = await registerMovement(dataToSubmit)
-      // const response = {
-      //   status: 201
-      // }
-      if (response?.status !== 201) {
+      const response = await postMovementAction(dataToSubmit)
+      console.log(response)
+
+      if (response === undefined) {
         throw new Error('Ha ocurrido un error')
       }
       toast.success('Movimiento registrado correctamente')

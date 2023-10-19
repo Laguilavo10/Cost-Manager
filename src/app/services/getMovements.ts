@@ -16,6 +16,9 @@ export const getMovements = async (limit: number) => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
+        },
+        next: {
+          tags: ['Movements']
         }
       }
     )
