@@ -14,13 +14,14 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import type { Movement } from '@/types'
 import Alert from './Alert'
-import { deleteMovement } from '@/services/deleteMovement'
+// import { deleteMovement } from '@/services/deleteMovement'
 import { toast } from 'sonner'
+import deleteMovementAction from '@/actions/deleteMovementAction'
 
 export default function OptionsRow({ id }: { id: Movement['idMovement'] }) {
   const handleDelete = async () => {
     try {
-      const respose = await deleteMovement(id)
+      const respose = await deleteMovementAction(id)
       if (respose?.status === 200) {
         toast.success('Movement deleted successfully')
       }
