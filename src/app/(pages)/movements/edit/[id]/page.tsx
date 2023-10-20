@@ -1,4 +1,5 @@
 'use client'
+import { updateMovementAction } from '@/actions/updateMovementAction'
 import DatePicker from '@/components/DatePicker'
 import { Form } from '@/components/Form'
 import { GoBack } from '@/components/GoBack'
@@ -14,7 +15,7 @@ import {
 // import { Separator } from '@/components/ui/separator'
 import { Textarea } from '@/components/ui/textarea'
 import { getMovementById } from '@/services/getMovementById'
-import { type UpdateMovement, updateMovement } from '@/services/updateMovement'
+import { type UpdateMovement } from '@/services/updateMovement'
 import { TypeMovement, type Movement, MethodPayment } from '@/types.d'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
@@ -57,8 +58,8 @@ export default function EditMovement({
     }
     // await new Promise((resolve) => setTimeout(resolve, 10000))
     try {
-      const response = await updateMovement(id, dataToSubmit)
-      if (response?.status !== 200) {
+      const response = await updateMovementAction(id, dataToSubmit)
+      if (response === undefined) {
         throw new Error('Error updating movement')
       }
       toast.success('Movement updated successfully')
