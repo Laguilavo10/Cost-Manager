@@ -1,10 +1,10 @@
-import {
-  ChevronLeftIcon as ChevronLeft,
-  ChevronRightIcon as ChevronRight
-} from '@heroicons/react/24/solid'
+// import {
+//   ChevronLeftIcon as ChevronLeft,
+//   ChevronRightIcon as ChevronRight
+// } from '@heroicons/react/24/solid'
 import DatePickerRange from '@/components/DatePickerRange'
 // import Overview from '@/components/Overview'
-import { Button } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button'
 // import { useState } from 'react'
 import TableData from '@/components/TableData'
 import { getMovementByDate } from '@/services/getMovementsByDate'
@@ -34,7 +34,7 @@ export default async function StatMonth({
           <h2 className='tracking-tight text-2xl font-extrabold'>
             Stats
           </h2>
-          <div className='flex gap-2'>
+          {/* <div className='flex gap-2'>
             <Button
               variant='outline'
               size='icon'
@@ -49,9 +49,9 @@ export default async function StatMonth({
             >
               <ChevronRight className='h-4 w-4' />
             </Button>
-          </div>
+          </div> */}
         </header>
-        <div className='flex items-center h-full'>
+        <div className='flex items-center h-full overflow-y-auto'>
           <TableData data={data} />
         </div>
       </div>

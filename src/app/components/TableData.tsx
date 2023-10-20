@@ -17,8 +17,6 @@ interface Props {
 }
 
 export default function TableData({ data }: Props) {
-  console.log(data)
-
   return (
     <Table className='overflow-y-auto'>
       <TableCaption>A list of your recent costs.</TableCaption>
@@ -34,7 +32,14 @@ export default function TableData({ data }: Props) {
       </TableHeader>
       <TableBody>
         {data?.map(
-          ({ createdAt, typeId, value, methodPaymentId, idMovement }) => (
+          ({
+            createdAt,
+            typeId,
+            value,
+            methodPaymentId,
+            idMovement,
+            description
+          }) => (
             <TableRow key={idMovement}>
               <TableCell className='font-medium'>
                 {new Date(createdAt).toLocaleString('es-CO', {
@@ -56,7 +61,9 @@ export default function TableData({ data }: Props) {
                 </span>
               </TableCell>
               <TableCell>{MethodPayment[methodPaymentId]}</TableCell>
-              <TableCell>description</TableCell>
+              <TableCell className='truncate max-w-[200px]' title={description}>
+                {description}
+              </TableCell>
               <TableCell className='text-right'>
                 {formatNumberAsCurrency(value)}
               </TableCell>

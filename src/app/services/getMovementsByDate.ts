@@ -15,6 +15,9 @@ export const getMovementByDate = async ({
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
+        },
+        next: {
+          tags: ['Movements']
         }
       }
     )

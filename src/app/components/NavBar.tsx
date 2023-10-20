@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import AuthButton from './AuthButton'
 import GithubButton from './GithubButton'
 import LinkNav from './LinkNav'
@@ -17,9 +18,9 @@ export default function NavBar() {
     <header className='text-white border-b-2 bg-primary border-border'>
       <nav className='flex items-center justify-between h-16 p-2 m-auto max-w-7xl'>
         <div className='flex items-center gap-3'>
-          <p className='items-center hidden text-2xl font-bold md:flex'>
+          <Link className='items-center hidden text-2xl font-bold md:flex' href='/'>
             Cost-Manager
-          </p>
+          </Link>
           <GithubButton />
         </div>
         <div className='flex items-center space-x-4 lg:space-x-6'>
