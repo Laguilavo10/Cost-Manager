@@ -1,4 +1,4 @@
-import { API_URL } from '@/constants/const'
+import { API_KEY, API_URL } from '@/constants/const'
 import type { Movement } from '@/types'
 
 export interface UpdateMovement
@@ -10,7 +10,7 @@ export const updateMovement = async (
   console.log(newData)
   try {
     const response = await fetch(
-      `${API_URL}/movement/update/${idMovement}?user=44f14864-7fc9-4853-b94c-b83403a103e5`,
+      `${API_URL}/movement/update/${idMovement}?apikey=${API_KEY}&user=44f14864-7fc9-4853-b94c-b83403a103e5`,
       {
         method: 'PUT',
         headers: {

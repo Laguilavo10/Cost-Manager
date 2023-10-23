@@ -82,6 +82,7 @@ import Chart from '@/components/Chart'
 // ]
 export default async function Dashboard() {
   const response = await getBalance({ year: 2023 })
+
   const data: Balance[] = await response?.json()
   const dataFormated = data?.map((item) => {
     item.month = numberToMonth(Number(item.month) - 1)
