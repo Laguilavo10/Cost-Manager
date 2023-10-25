@@ -3,15 +3,17 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { ArrowRightOnRectangleIcon as SignOutIcon } from '@heroicons/react/24/solid'
 import { Skeleton } from './ui/skeleton'
 import { Button } from './ui/button'
+import { signIn, signOut, } from 'next-auth/react'
+import type { Session } from 'next-auth'
 
-export default function AuthButton() {
-  const data = null
+
+export default async function AuthButton({ session }: { session: Session | null }) {
   return (
     <>
-      {data == null ? (
+      {session === null ? (
         <>
           <Button
-            // variant='destructive'
+            onClick={() => signIn()}
             className='bg-secondary hover:bg-secondary/60'
           >
             Sign In
@@ -19,14 +21,23 @@ export default function AuthButton() {
         </>
       ) : (
         <div className='flex items-center gap-3'>
-          <span>{data}</span>
+          <span>{session?.user?.name}</span>
           <Avatar>
-            <AvatarImage src={data ?? ''} alt={data ?? ''} />
+            <AvatarImage src={session?.user?.image ?? ''} alt={session?.user?.name ?? ''} />
             <AvatarFallback>
               <Skeleton className='w-12 h-12 rounded-full' />
             </AvatarFallback>
           </Avatar>
-          <SignOutIcon className='h-8' />
+          <Button
+            onClick={async () => {
+              await signOut({
+                callbackUrl: '/'
+              })
+            }}
+            className='bg-secondary hover:bg-secondary/60'
+          >
+            <SignOutIcon className='h-8' />
+          </Button>
         </div>
       )}
     </>

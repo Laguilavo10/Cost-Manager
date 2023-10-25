@@ -26,10 +26,7 @@ export default function RootLayout({
           className={`${inter.className} bg-primary text-white dark overflow-x-hidden`}
         >
           <Toaster richColors/>
-          <NavBar />
-          <MaxWidthWrapper>
             <main>{children}</main>
-          </MaxWidthWrapper>
           <Footer />
         </body>
       </Providers>

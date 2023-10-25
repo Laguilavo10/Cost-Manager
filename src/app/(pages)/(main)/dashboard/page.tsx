@@ -82,11 +82,14 @@ import Chart from '@/components/Chart'
 // ]
 export default async function Dashboard() {
   const response = await getBalance({ year: 2023 })
+  console.log(response)
 
   const data: Balance[] = await response?.json()
+  console.log(data)
+
   const dataFormated = data?.map((item) => {
     item.month = numberToMonth(Number(item.month) - 1)
-    return item
+    return item 
   })
 
   return (
@@ -120,7 +123,7 @@ export default async function Dashboard() {
             <Chart data={dataFormated} />
           </CardContent>
         </Card>
-        <RecentSales />
+        {/* <RecentSales /> */}
       </div>
     </section>
   )
