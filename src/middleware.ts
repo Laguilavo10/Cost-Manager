@@ -1,41 +1,25 @@
-import { NextResponse } from 'next/server'
-import { withAuth } from 'next-auth/middleware'
+import { NextRequest, NextResponse } from 'next/server'
+import { getSession } from '@auth0/nextjs-auth0/edge'
 
-// idk why but this is working
-export default withAuth(
-   (req) => {
-    const token = req.nextauth.token
-    const pathname = req.nextUrl.pathname
-    
-    if (pathname === '/auth/signin' && token) {
-      // Si el usuario está autenticado y trata de acceder a /auth/signin, redirígelo a /dashboard.
-      return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/dashboard`)
-    }
+export default async function middleware(req: NextRequest) {
+  const response = NextResponse.next()
+  const pathname = req.nextUrl.pathname
+  const session = await getSession(req, response)
+  const isAuth = session?.user
 
-    if (!token && pathname === '/') {
-      // Si el usuario no está autenticado y no está en /auth/signin, redirígelo a /auth/signin.
-      return NextResponse.next()
-    }
-    if (!token && pathname !== '/auth/signin') {
-      // Si el usuario no está autenticado y no está en /auth/signin, redirígelo a /auth/signin.
-      return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/auth/signin`)
-    }
-
-    // En otros casos, permite el acceso.
-    return NextResponse.next()
-
-  },
-  {
-    callbacks:{
-      authorized({token, req}) {
-        if(token !== null && req.nextUrl.pathname === '/'){
-          return false
-        }
-        return true
-      },
-    }
+  if (pathname === '/' && isAuth) {
+    return NextResponse.redirect(new URL('/dashboard', req.url))
   }
-)
+  if (!isAuth && pathname === '/') {
+    return NextResponse.next()
+  }
+  if (!isAuth) {
+    return NextResponse.redirect(new URL('/api/auth/login', req.url))
+  }
 
-export const config = { matcher: ['/','/dashboard', '/movements/:path*', '/auth/signin'] }
+  return response
+}
 
+export const config = {
+  matcher: ['/', '/dashboard', '/movements/:path*']
+}
