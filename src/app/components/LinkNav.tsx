@@ -11,8 +11,7 @@ export default function LinkNav({
   name: string
   path: string
 }) {
-  const [, pathname] = usePathname().split('/')
-  console.log(pathname, path)
+  const pathname = usePathname()?.split('/')?.[1]
   return (
     <Link
       href={`/${path}`}

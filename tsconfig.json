@@ -20,8 +20,10 @@
     ],
     "paths": {
       "@/*": ["./src/app/*"]
-    }
+    },
+    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
+  
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.js", "./.eslintrc.json"],
   "exclude": ["node_modules"]
 }
