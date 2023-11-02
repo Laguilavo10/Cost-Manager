@@ -2,8 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { ArrowRightOnRectangleIcon as SignOutIcon } from '@heroicons/react/24/solid'
 import { Skeleton } from './ui/skeleton'
-import { Button, buttonVariants } from './ui/button'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { buttonVariants } from './ui/button'
 import type { Session } from '@auth0/nextjs-auth0'
 import LinkNav from './LinkNav'
 import { cn } from '@/lib/utils'
@@ -20,8 +19,7 @@ const Links = [
   }
 ]
 
-export default function AuthButton({ session }: { session: Session | null }) {
-  console.log(session)
+export default function AuthButton({ session }: { session: Session | null | undefined }) {
   return (
     <>
       {!session ? (

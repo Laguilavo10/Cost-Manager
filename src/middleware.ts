@@ -6,7 +6,8 @@ export default async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname
   const session = await getSession(req, response)
   const isAuth = session?.user
-
+  // console.log(session)
+  
   if (pathname === '/' && isAuth) {
     return NextResponse.redirect(new URL('/dashboard', req.url))
   }

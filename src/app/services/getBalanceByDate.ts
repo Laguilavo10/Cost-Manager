@@ -1,5 +1,4 @@
-import { API_URL, API_KEY } from '@/constants/const'
-// import type { Movement } from '@/types'
+import { Fetch } from '@/lib/Fetch'
 
 export const getBalance = async ({
   year,
@@ -8,22 +7,20 @@ export const getBalance = async ({
   year: number
   month?: number
 }) => {
-  try {
-    const END_POINT = `${API_URL}/balance?apikey=${API_KEY}&user=44f14864-7fc9-4853-b94c-b83403a103e5&year=${year}${
-      month === undefined || isNaN(month) ? '' : `&month=${month}`
-    }`
-    // console.log(END_POINT)
+  const END_POINT = `/balance?&user=44f14864-7fc9-4853-b94c-b83403a103e5&year=${year}${
+    month === undefined || isNaN(month) ? '' : `&month=${month}`
+  }`
 
-    const response = await fetch(END_POINT, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      next: {
-        tags: ['Movements']
+  try {
+    const response = await Fetch({
+      url: END_POINT,
+      options: {
+        next: {
+          tags: ['Movements']
+        }
       }
     })
-
+    
     return response
   } catch (error) {
     console.log(error)
