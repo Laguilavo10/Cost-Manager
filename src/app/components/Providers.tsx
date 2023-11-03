@@ -12,4 +12,4 @@ export default function Providers({ children }: PropsWithChildren) {
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </UserProvider>
   )
-}  
+}

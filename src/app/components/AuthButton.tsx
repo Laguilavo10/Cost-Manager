@@ -24,7 +24,7 @@ export default function AuthButton({ session }: { session: Session | null | unde
     <>
       {!session ? (
         <>
-          <Link href={`/api/auth/login`} className={cn(buttonVariants())}>
+          <Link href={'/api/auth/login'} className={cn(buttonVariants())}>
             Sign In
           </Link>
         </>
@@ -45,7 +45,7 @@ export default function AuthButton({ session }: { session: Session | null | unde
             </Avatar>
             <span>{session?.user?.name}</span>
             <Link
-              href={`/api/auth/logout`}
+              href={'/api/auth/logout'}
               className={cn('!bg-transparent !hover:bg-transparent !p-0')}
             >
               <SignOutIcon className='h-6 fill-white' />

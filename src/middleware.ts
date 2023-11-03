@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@auth0/nextjs-auth0/edge'
 
 export default async function middleware(req: NextRequest) {
@@ -7,7 +7,7 @@ export default async function middleware(req: NextRequest) {
   const session = await getSession(req, response)
   const isAuth = session?.user
   // console.log(session)
-  
+
   if (pathname === '/' && isAuth) {
     return NextResponse.redirect(new URL('/dashboard', req.url))
   }

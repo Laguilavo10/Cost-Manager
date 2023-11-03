@@ -20,7 +20,7 @@ export const getBalance = async ({
         }
       }
     })
-    
+
     return response
   } catch (error) {
     console.log(error)

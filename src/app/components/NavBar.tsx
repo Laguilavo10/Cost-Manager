@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import AuthButton from './AuthButton'
 import GithubButton from './GithubButton'
-import {  getSession } from '@auth0/nextjs-auth0';
+import { getSession } from '@auth0/nextjs-auth0'
 
 export default async function NavBar() {
   const session = await getSession()

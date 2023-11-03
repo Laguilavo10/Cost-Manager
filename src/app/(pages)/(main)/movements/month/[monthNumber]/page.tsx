@@ -3,7 +3,7 @@
 //   ChevronRightIcon as ChevronRight
 // } from '@heroicons/react/24/solid'
 import DatePickerRange from '@/components/DatePickerRange'
- 
+
 import TableData from '@/components/TableData'
 import { getMovementByDate } from '@/services/getMovementsByDate'
 import type { Movement } from '@/types'

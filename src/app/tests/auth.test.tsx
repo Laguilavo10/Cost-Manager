@@ -5,6 +5,6 @@ import { Suspense } from 'react'
 describe('utils libraries', () => {
   test('prove number to Month function', async () => {
     const component = await Dashboard()
-    console.log(component);
+    console.log(component)
   })
 })

@@ -19,14 +19,14 @@ export async function Fetch({ url = '', options = {} }: Props) {
       session = data.session
     }
   } catch (error) {
-    console.error('Error fetching session', error);
+    console.error('Error fetching session', error)
   }
 
   const token = session?.idToken
   const headers = options?.headers ?? {} // get headers from options
   delete options?.headers // delete headers from options to avoid duplication
 
-  return fetch(`${API_URL}${url}`, {
+  return await fetch(`${API_URL}${url}`, {
     method: options?.method ?? 'GET',
     headers: {
       'Content-Type': 'application/json',

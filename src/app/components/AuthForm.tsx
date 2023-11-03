@@ -12,8 +12,8 @@ import { useSearchParams } from 'next/navigation'
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function AuthForm({ className, ...props }: UserAuthFormProps) {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard'
   // const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   // async function onSubmit(event: React.SyntheticEvent) {

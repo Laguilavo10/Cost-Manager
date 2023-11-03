@@ -80,7 +80,7 @@ import Chart from '@/components/Chart'
 //     description: '+201 since last hour'
 //   }
 // ]
-export const dynamic = "force-dynamic"
+export const dynamic = 'force-dynamic'
 
 export default async function Dashboard() {
   const response = await getBalance({ year: 2023 })
@@ -89,7 +89,7 @@ export default async function Dashboard() {
 
   const dataFormated = data?.map((item) => {
     item.month = numberToMonth(Number(item.month) - 1)
-    return item 
+    return item
   })
 
   return (
