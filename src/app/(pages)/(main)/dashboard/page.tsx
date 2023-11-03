@@ -80,6 +80,8 @@ import Chart from '@/components/Chart'
 //     description: '+201 since last hour'
 //   }
 // ]
+export const dynamic = "force-dynamic"
+
 export default async function Dashboard() {
   const response = await getBalance({ year: 2023 })
 
