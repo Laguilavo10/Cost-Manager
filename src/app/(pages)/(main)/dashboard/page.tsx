@@ -86,7 +86,6 @@ export default async function Dashboard() {
   const response = await getBalance({ year: 2023 })
 
   const data: Balance[] = await response?.json()
-
   const dataFormated = data?.map((item) => {
     item.month = numberToMonth(Number(item.month) - 1)
     return item
@@ -123,7 +122,7 @@ export default async function Dashboard() {
             <Chart data={dataFormated} />
           </CardContent>
         </Card>
-        <RecentSales />
+        {/* <RecentSales /> */}
       </div>
     </section>
   )

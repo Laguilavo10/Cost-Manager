@@ -44,7 +44,7 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
     }
     try {
       const response = await postMovementAction(dataToSubmit)
-      console.log(response)
+      // console.log(response)
 
       if (response === undefined) {
         throw new Error('Ha ocurrido un error')

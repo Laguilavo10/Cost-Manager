@@ -22,11 +22,11 @@ export async function Fetch({ url = '', options = {} }: Props) {
     console.error('Error fetching session', error)
   }
 
-  const token = session?.idToken
+  const token = session?.accessToken
+
   const headers = options?.headers ?? {} // get headers from options
   delete options?.headers // delete headers from options to avoid duplication
-
-  return await fetch(`${API_URL}${url}`, {
+  const response = await fetch(`${API_URL}${url}`, {
     method: options?.method ?? 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -35,5 +35,5 @@ export async function Fetch({ url = '', options = {} }: Props) {
     },
     ...options
   })
-  // return response
+  return response
 }
