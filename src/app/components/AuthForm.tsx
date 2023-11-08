@@ -2,7 +2,7 @@
 
 import React from 'react'
 // import { cn } from '@/lib/utils'
-import { GitHub, Spinner } from '@/components/ui/icons'
+import { GitHub } from '@/components/ui/icons'
 import { Button } from '@/components/ui/button'
 import { signIn } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
@@ -13,7 +13,7 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function AuthForm({ className, ...props }: UserAuthFormProps) {
   const searchParams = useSearchParams()
-  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard'
+  const callbackUrl = searchParams.get('callbackUrl') ?? '/dashboard'
   // const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   // async function onSubmit(event: React.SyntheticEvent) {
@@ -62,8 +62,8 @@ export function AuthForm({ className, ...props }: UserAuthFormProps) {
       <Button
         variant='outline'
         type='button'
-        onClick={(a) => {
-          signIn('github', { callbackUrl })
+        onClick={async (a) => {
+          await signIn('github', { callbackUrl })
         }}
       >
         {/* {isLoading ? (

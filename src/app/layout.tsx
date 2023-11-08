@@ -1,9 +1,9 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import NavBar from '@/components/NavBar'
+// import NavBar from '@/components/NavBar'
 import { Footer } from './components/Footer'
-import MaxWidthWrapper from './components/MaxWidthWrapper'
+// import MaxWidthWrapper from './components/MaxWidthWrapper'
 import Providers from './components/Providers'
 import { Toaster } from 'sonner'
 

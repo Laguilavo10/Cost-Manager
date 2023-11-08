@@ -19,9 +19,14 @@ const Links = [
   }
 ]
 
-export default function AuthButton({ session }: { session: Session | null | undefined }) {
+export default function AuthButton({
+  session
+}: {
+  session: Session | null | undefined
+}) {
   return (
     <>
+      {/* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */}
       {!session ? (
         <>
           <Link href={'/api/auth/login'} className={cn(buttonVariants())}>

@@ -1,5 +1,6 @@
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home() {
@@ -7,7 +8,7 @@ export default function Home() {
     <section className='overflow-hidden py-10'>
       <div className='md:grid grid-cols-[50%_1fr] gap-20 flex flex-col lg:flex-row lg:items-center'>
         <div className=''>
-          <img className='' src='./635shots_so.png' alt='' />
+          <Image className='' src='./635shots_so.png' alt='' />
         </div>
 
         <div className='flex items-center justify-center w-full lg:order-2'>

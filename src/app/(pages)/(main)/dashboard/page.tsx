@@ -122,7 +122,7 @@ export default async function Dashboard() {
             <Chart data={dataFormated} />
           </CardContent>
         </Card>
-        {/* <RecentSales /> */}
+        <RecentSales />
       </div>
     </section>
   )
