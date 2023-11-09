@@ -8,6 +8,7 @@ import TableData from '@/components/TableData'
 import { getMovementByDate } from '@/services/getMovementsByDate'
 import type { Movement } from '@/types'
 import BudgetCards from '@/components/BudgetCards'
+import { getDaysInMonth } from '@/lib/getDaysInMonth'
 
 export default async function StatMonth({
   params: { monthNumber },
@@ -18,8 +19,9 @@ export default async function StatMonth({
 }) {
   const response = await getMovementByDate({
     to: `${monthNumber}/01/${year}`,
-    from: `${monthNumber}/31/${year}`
+    from: `${monthNumber}/${getDaysInMonth(monthNumber, year)}/${year}`
   })
+
   const data: Movement[] = await response?.json()
 
   const month =
@@ -29,9 +31,7 @@ export default async function StatMonth({
     <section className='md:grid md:grid-cols-[60%_1fr] gap-20 flex flex-col-reverse'>
       <div>
         <header className='flex justify-between'>
-          <h2 className='tracking-tight text-2xl font-extrabold'>
-            Stats
-          </h2>
+          <h2 className='tracking-tight text-2xl font-extrabold'>Stats</h2>
           {/* <div className='flex gap-2'>
             <Button
               variant='outline'
@@ -55,7 +55,7 @@ export default async function StatMonth({
       </div>
       <aside className='flex flex-col gap-5'>
         <DatePickerRange month={month} year={year} />
-        <BudgetCards year={year} month={Number(monthNumber)}/>
+        <BudgetCards year={year} month={Number(monthNumber)} />
       </aside>
     </section>
   )
