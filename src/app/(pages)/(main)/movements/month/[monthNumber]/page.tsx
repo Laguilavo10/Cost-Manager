@@ -17,6 +17,8 @@ export default async function StatMonth({
   params: { monthNumber: string }
   searchParams: { year: number }
 }) {
+  if (monthNumber === 'favicon.svg') return null
+
   const response = await getMovementByDate({
     to: `${monthNumber}/01/${year}`,
     from: `${monthNumber}/${getDaysInMonth(monthNumber, year)}/${year}`
