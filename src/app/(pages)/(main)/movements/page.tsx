@@ -19,7 +19,7 @@ const months = [
 ]
 
 export default function Movements() {
-  const currentMonth = new Date().getMonth()
+  const currentDate = new Date()
   return (
     <MaxWidthWrapper>
       <div className='grid lg:grid-cols-4 md:grid-cols-3 justify-center gap-y-3'>
@@ -31,7 +31,7 @@ export default function Movements() {
               }?year=${new Date().getFullYear()}`}
               className={cn(
                 'relative overflow-x-hidden cursor-pointer',
-                currentMonth === index &&
+                currentDate.getMonth() === index &&
                   'border border-secondary rounded-md'
               )}
               key={index + 1}
@@ -43,7 +43,7 @@ export default function Movements() {
                 disabled
                 disableNavigation
                 showOutsideDays={false}
-                month={new Date(2023, index)}
+                month={new Date(Date.UTC(currentDate.getFullYear(), index + 1))}
               />
             </Link>
           )
