@@ -30,7 +30,7 @@ export default async function StatMonth({
     monthNumber === 'currentDate' ? new Date().getMonth() + 1 : monthNumber
 
   return (
-    <section className='md:grid md:grid-cols-[60%_1fr] gap-20 flex flex-col-reverse'>
+    <section className='md:grid md:grid-cols-[60%_1fr] gap-10 md:gap-20 flex flex-col-reverse'>
       <div>
         <header className='flex justify-between'>
           <h2 className='tracking-tight text-2xl font-extrabold'>Stats</h2>

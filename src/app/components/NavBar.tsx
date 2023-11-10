@@ -6,9 +6,8 @@ import { getSession } from '@auth0/nextjs-auth0'
 export default async function NavBar() {
   const session = await getSession()
   return (
-
     <header className='text-white border-b-2 bg-primary border-border'>
-      <nav className='flex items-center justify-between h-16 p-2 m-auto max-w-7xl'>
+      <nav className='flex items-center justify-between h-16 md:p-2 p-6 m-auto max-w-7xl'>
         <div className='flex items-center gap-3'>
           <Link
             className='items-center hidden text-2xl font-bold md:flex'

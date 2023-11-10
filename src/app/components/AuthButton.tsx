@@ -45,10 +45,10 @@ export default function AuthButton({
                 alt={session?.user?.name ?? ''}
               />
               <AvatarFallback>
-                <Skeleton className='w-12 h-12 rounded-  full' />
+                <Skeleton className='w-12 h-12 rounded-full' />
               </AvatarFallback>
             </Avatar>
-            <span>{session?.user?.name}</span>
+            <span className='hidden md:block'>{session?.user?.name}</span>
             <Link
               href={'/api/auth/logout'}
               className={cn('!bg-transparent !hover:bg-transparent !p-0')}

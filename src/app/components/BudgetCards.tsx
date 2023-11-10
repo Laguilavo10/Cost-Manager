@@ -14,7 +14,7 @@ export default async function BudgetCards({
   const response = await getBalance({ year, month })
   const [data]: [Balance] = await response?.json()
   return (
-    <div className='flex justify-around'>
+    <div className='flex justify-around flex-col md:flex-row gap-y-3'>
       <CardsDashboard
         title={'Total Revenue'}
         svg={<BanknotesIcon />}

@@ -98,7 +98,7 @@ export default async function Dashboard() {
         <NewMovement>
           <Button className='flex gap-2'>
             <PlusIcon className='h-5' />
-            New Movement
+            <span className='hidden md:block'>New Movement</span>
           </Button>
         </NewMovement>
       </div>
