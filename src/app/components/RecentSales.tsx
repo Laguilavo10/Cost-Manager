@@ -12,12 +12,12 @@ import { cn } from '@/lib/utils'
 import OptionsRow from './OptionsRow'
 import { formatNumberAsCurrency } from '@/lib/formatNumberAsCurrency'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import NoMovements from './NoMovements'
 const LIMIT = 10
 
 export default async function RecentSales() {
   const response = await getMovements(LIMIT)
   const data: Movement[] = await response?.json()
-
   return (
     <Card className='col-span-4 md:col-span-3 max-h-[450px] overflow-y-auto'>
       <ScrollArea className='h-full rounded-md border p-4'>
@@ -32,6 +32,7 @@ export default async function RecentSales() {
           {/* <CardDescription>You made 265 sales this month.</CardDescription> */}
         </CardHeader>
         <CardContent>
+          {data.length === 0 && <NoMovements />}
           {data?.map(
             ({ idMovement, description, createdAt, typeId, value }) => {
               return (

@@ -23,7 +23,7 @@ export async function Fetch({ url = '', options = {} }: Props) {
   }
 
   const token = session?.accessToken
-
+  // console.log(token)
   const headers = options?.headers ?? {} // get headers from options
   delete options?.headers // delete headers from options to avoid duplication
   const response = await fetch(`${API_URL}${url}`, {
