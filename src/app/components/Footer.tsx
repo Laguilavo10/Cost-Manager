@@ -6,7 +6,7 @@ export function Footer() {
     <footer className='flex m-auto my-5 text-center w-fit justify-self-center text-primary-text !mt-16'>
       Made with ❤️ by
       <Link
-        href='https://github.com/Laguilavo10'
+        href='https://andres-laguilavo.vercel.app/'
         className='pl-1 text-white transition-colors duration-200 ease-in border-b border-white border-dashed hover:border-secondary hover:text-secondary'
       >
         @laguilavo10
