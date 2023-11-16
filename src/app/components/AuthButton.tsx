@@ -7,6 +7,7 @@ import type { Session } from '@auth0/nextjs-auth0'
 import LinkNav from './LinkNav'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import { validateTokenExpirationDate } from '@/lib/validateTokenExpirationDate'
 
 const Links = [
   {
@@ -24,10 +25,11 @@ export default function AuthButton({
 }: {
   session: Session | null | undefined
 }) {
+  const isAuth = validateTokenExpirationDate(session?.accessTokenExpiresAt)
   return (
     <>
       {/* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */}
-      {!session ? (
+      {!isAuth ? (
         <>
           <Link href={'/api/auth/login'} className={cn(buttonVariants())}>
             Sign In
