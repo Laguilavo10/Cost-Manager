@@ -17,6 +17,10 @@ const Links = [
   {
     name: 'Movements',
     path: 'movements'
+  },
+  {
+    name: 'Loans',
+    path: 'loans'
   }
 ]
 
