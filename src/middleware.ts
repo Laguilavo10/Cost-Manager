@@ -11,7 +11,7 @@ export default async function middleware(req: NextRequest) {
   const isValidAccesToken = validateTokenExpirationDate(
     session?.accessTokenExpiresAt
   )
-  console.log(isValidAccesToken)
+  // console.log(isValidAccesToken)
 
   // const expirationTime = new Date(
   //   Number(session?.accessTokenExpiresAt) * 1000
