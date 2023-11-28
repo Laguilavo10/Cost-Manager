@@ -2,21 +2,43 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@auth0/nextjs-auth0/edge'
 import { validateTokenExpirationDate } from '@/lib/validateTokenExpirationDate'
+import { renewAccessToken } from '@/lib/renewAccesToken'
+// import { renewAccessToken } from '@/lib/renewAccesToken'
 // import { getAccessToken } from '@auth0/nextjs-auth0'
 
 export default async function middleware(req: NextRequest) {
   const response = NextResponse.next()
   const pathname = req.nextUrl.pathname
   const session = await getSession(req, response)
-  const isAuth = validateTokenExpirationDate(session?.accessTokenExpiresAt)
+  console.log(session)
+  const isValidAccesToken = validateTokenExpirationDate(
+    session?.accessTokenExpiresAt
+  )
+  console.log(isValidAccesToken)
 
-  if (pathname === '/' && isAuth) {
+  // const expirationTime = new Date(
+  //   Number(session?.accessTokenExpiresAt) * 1000
+  // ).getTime()
+  // const currentTime = new Date().getTime()
+  // const timeToRefresh = 24 * 60 * 60 * 1000
+  // const timeToCompare = expirationTime - timeToRefresh
+
+  // if (currentTime >= timeToCompare) {
+  //   renewAccessToken(session?.refreshToken ?? '')
+  //     .then((newToken) => {
+  //       console.log('Nuevo token de acceso:', newToken)
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error al renovar el token de acceso:', error.message)
+  //     })
+  // }
+  if (pathname === '/' && isValidAccesToken) {
     return NextResponse.redirect(new URL('/dashboard', req.url))
   }
-  if (!isAuth && pathname === '/') {
+  if (!isValidAccesToken && pathname === '/') {
     return NextResponse.next()
   }
-  if (!isAuth) {
+  if (!isValidAccesToken) {
     return NextResponse.redirect(new URL('/api/auth/login', req.url))
   }
 
