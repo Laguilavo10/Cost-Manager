@@ -2,9 +2,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@auth0/nextjs-auth0/edge'
 import { validateTokenExpirationDate } from '@/lib/validateTokenExpirationDate'
-import { renewAccessToken } from '@/lib/renewAccesToken'
-// import { renewAccessToken } from '@/lib/renewAccesToken'
-// import { getAccessToken } from '@auth0/nextjs-auth0'
 
 export default async function middleware(req: NextRequest) {
   const response = NextResponse.next()
