@@ -15,6 +15,7 @@ export default function Chart({ data }: { data: any[] }) {
       animationDuration={500}
       yAxisWidth={48}
       valueFormatter={formatNumberAsCurrency}
+      showAnimation
     />
   )
 }

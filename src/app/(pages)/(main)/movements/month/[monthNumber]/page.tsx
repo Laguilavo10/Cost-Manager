@@ -3,7 +3,6 @@
 //   ChevronRightIcon as ChevronRight
 // } from '@heroicons/react/24/solid'
 import DatePickerRange from '@/components/DatePickerRange'
-
 import TableData from '@/components/TableData'
 import { getMovementByDate } from '@/services/getMovementsByDate'
 import type { Movement } from '@/types'
@@ -28,7 +27,6 @@ export default async function StatMonth({
 
   const month =
     monthNumber === 'currentDate' ? new Date().getMonth() + 1 : monthNumber
-
   return (
     <section className='md:grid md:grid-cols-[60%_1fr] gap-10 md:gap-20 flex flex-col-reverse'>
       <div>

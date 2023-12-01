@@ -39,6 +39,16 @@ export default function OptionsRow({ id }: { id: Movement['idMovement'] }) {
         </Button>
       </PopoverTrigger>
       <PopoverContent className='flex flex-col max-w-min p-1'>
+        <Link
+          href={`/movements/edit/${id}`}
+          className={cn(
+            'hover:!bg-yellow-700/30 !text-yellow-600 flex gap-2 !justify-start items-center !bg-transparent',
+            buttonVariants()
+          )}
+        >
+          <PencilIcon className='w-5 fill-current' />
+          Edit
+        </Link>
         <Alert
           title={'Delete Movement'}
           description={'Are you sure you want to delete this movement?'}
@@ -53,25 +63,6 @@ export default function OptionsRow({ id }: { id: Movement['idMovement'] }) {
             Delete
           </Button>
         </Alert>
-        <Link
-          href={`/movements/edit/${id}`}
-          className={cn(
-            'hover:!bg-yellow-700/30 !text-yellow-600 flex gap-2 !justify-start items-center !bg-transparent',
-            buttonVariants()
-          )}
-        >
-          <PencilIcon className='w-5 fill-current' />
-          Edit
-        </Link>
-        {/* </div> */}
-        {/* <div className='grid gap-4'>
-          <div className='space-y-2'>
-            <h4 className='font-medium leading-none'>Dimensions</h4>
-            <p className='text-sm text-muted-foreground'>
-              Set the dimensions for the layer.
-            </p>
-          </div>
-        </div> */}
       </PopoverContent>
     </Popover>
   )

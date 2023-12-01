@@ -4,6 +4,7 @@ import DatePicker from '@/components/DatePicker'
 import { Form } from '@/components/Form'
 import { GoBack } from '@/components/GoBack'
 import { InputForm } from '@/components/NewMovement'
+import EditMovementSkeleton from '@/components/Skelentons/EditMovement.skeleton'
 import { Input } from '@/components/ui/input'
 import {
   Select,
@@ -27,16 +28,14 @@ export default function EditMovement({
   params: { id: string }
 }) {
   const [date, setDate] = useState<Date>(new Date())
-
   const { data, isLoading } = useQuery(['movement_id'], async () => {
     const response = await getMovementById(id)
     const data: Movement = await response?.json()
     setDate(new Date(data?.createdAt))
     return data
   })
-
   if (isLoading) {
-    return <div>Loading...</div>
+    return <EditMovementSkeleton />
   }
   if (data === undefined) {
     return <div>Hubo un error</div>
@@ -56,7 +55,6 @@ export default function EditMovement({
       ) as unknown as MethodPayment,
       description: formData.get('description') as string
     }
-    // await new Promise((resolve) => setTimeout(resolve, 10000))
     try {
       const response = await updateMovementAction(id, dataToSubmit)
       if (response === undefined) {

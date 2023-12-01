@@ -6,11 +6,12 @@ import {
   // BanknotesIcon,
   PlusIcon
 } from '@heroicons/react/24/solid'
-import { getBalance } from '@/services/getBalanceByDate'
-import { numberToMonth } from '@/lib/numberToMonth'
-import type { Balance } from '@/types'
 import RecentSales from '@/components/RecentSales'
-import Chart from '@/components/Chart'
+// import CardsDashboard from '@/components/CardsDashboard'
+import { Suspense } from 'react'
+import RecentSalesSkeleton from '@/components/Skelentons/RecentSales.skeleton'
+import DashboardChart from '@/components/DashboardChart'
+import DashboardChartSkeleton from '@/components/Skelentons/DashboardChart.skeleton'
 
 // const cardData = [
 //   {
@@ -80,17 +81,10 @@ import Chart from '@/components/Chart'
 //     description: '+201 since last hour'
 //   }
 // ]
+
 export const dynamic = 'force-dynamic'
 
-export default async function Dashboard() {
-  const response = await getBalance({ year: 2023 })
-
-  const data: Balance[] = await response?.json()
-  const dataFormated = data?.map((item) => {
-    item.month = numberToMonth(Number(item.month) - 1)
-    return item
-  })
-
+export default function Dashboard() {
   return (
     <section className='flex flex-col gap-4'>
       <div className='flex justify-between w-full'>
@@ -102,8 +96,8 @@ export default async function Dashboard() {
           </Button>
         </NewMovement>
       </div>
-      {/* <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
-        {cardData?.map(({ title, svgPath, value, description }, index) => (
+      <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
+        {/* {cardData?.map(({ title, svgPath, value, description }, index) => (
           <CardsDashboard
             key={index}
             title={title}
@@ -111,18 +105,22 @@ export default async function Dashboard() {
             value={value}
             description={description}
           />
-        ))}
-      </div> */}
+        ))} */}
+      </div>
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
-        <Card className='col-span-4'>
+        <Card className='col-span-4 w-full h-full'>
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
-          <CardContent className='pl-2'>
-            <Chart data={dataFormated} />
+          <CardContent className='w-full h-full'>
+            <Suspense fallback={<DashboardChartSkeleton />}>
+              <DashboardChart />
+            </Suspense>
           </CardContent>
         </Card>
-        <RecentSales />
+        <Suspense fallback={<RecentSalesSkeleton />}>
+          <RecentSales />
+        </Suspense>
       </div>
     </section>
   )

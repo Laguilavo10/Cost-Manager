@@ -17,11 +17,12 @@ const Links = [
   {
     name: 'Movements',
     path: 'movements'
-  },
-  {
-    name: 'Loans',
-    path: 'loans'
   }
+  // ,
+  // {
+  //   name: 'Loans',
+  //   path: 'loans'
+  // }
 ]
 
 export default function AuthButton({
