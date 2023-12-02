@@ -108,7 +108,7 @@ export default function Dashboard() {
         ))} */}
       </div>
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
-        <Card className='col-span-4 w-full h-full'>
+        <Card className='col-span-4 w-full h-full min-h-[350px]'>
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
