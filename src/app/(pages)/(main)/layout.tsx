@@ -9,9 +9,9 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <section>
+    <>
       <NavBar />
       <MaxWidthWrapper>{children}</MaxWidthWrapper>
-    </section>
+    </>
   )
 }

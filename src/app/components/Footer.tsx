@@ -3,7 +3,7 @@ import React from 'react'
 
 export function Footer() {
   return (
-    <footer className='flex m-auto my-5 text-center w-fit justify-self-center text-primary-text !mt-16'>
+    <footer className='flex m-auto my-5 text-center w-fit justify-self-center text-primary-text !mt-16 absolute bottom-1 left-0 right-0'>
       Made with ❤️ by
       <Link
         href='https://andres-laguilavo.vercel.app/'

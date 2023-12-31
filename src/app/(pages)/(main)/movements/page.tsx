@@ -31,7 +31,7 @@ export default function Movements({
         <YearPicker />
       </span>
       <div
-        className='grid lg:grid-cols-4 md:grid-cols-3 justify-center gap-y-3'
+        className='grid lg:grid-cols-4 md:grid-cols-3 justify-center gap-3'
       >
         {months.map((_, index) => {
           return (
@@ -54,6 +54,7 @@ export default function Movements({
                 disableNavigation
                 showOutsideDays={false}
                 month={new Date(Date.UTC(date.getFullYear(), index + 1))}
+                className='border-secondary/20 border rounded-sm'
               />
             </Link>
           )
