@@ -2,17 +2,23 @@ import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import landingImg from '../../../../public/635shots_so.png'
+import landingImg from '../../../../public/landing.png'
 
 export default function Home() {
   return (
-    <section className='overflow-hidden py-10'>
-      <div className='md:grid grid-cols-[50%_1fr] gap-20 flex flex-col lg:flex-row lg:items-center'>
-        <div>
-          <Image src={landingImg.src} alt='main' width={2267} height={1269} />
+    <section className='py-10'>
+      <div className='md:grid grid-cols-2 gap-10 flex flex-col lg:flex-row lg:items-center re'>
+        <div className='relative h-full'>
+          <Image
+            src={landingImg.src}
+            alt='main'
+            width={2267}
+            height={1269}
+            className=' h-full w-full -left-44'
+            quality={100}
+          />
         </div>
-
-        <div className='flex items-center justify-center w-full lg:order-2'>
+        <div className='flex items-center justify-center w-full '>
           <div className='h-full px-4'>
             <h1 className='text-4xl font-bold text-white sm:text-6xl xl:text-7xl'>
               Take control <br />
