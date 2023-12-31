@@ -7,7 +7,7 @@ import landingImg from '../../../../public/landing.png'
 export default function Home() {
   return (
     <section className='py-10'>
-      <div className='md:grid grid-cols-2 gap-10 flex flex-col lg:flex-row lg:items-center re'>
+      <div className='lg:grid grid-cols-2 gap-10 flex flex-col text-center'>
         <div className='relative h-full'>
           <Image
             src={landingImg.src}
