@@ -85,6 +85,7 @@ import DashboardChartSkeleton from '@/components/Skelentons/DashboardChart.skele
 export const dynamic = 'force-dynamic'
 
 export default function Dashboard() {
+  const currentYear = new Date().getFullYear()
   return (
     <section className='flex flex-col gap-4'>
       <div className='flex justify-between w-full'>
@@ -109,12 +110,15 @@ export default function Dashboard() {
       </div>
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
         <Card className='col-span-4 w-full h-full min-h-[350px]'>
-          <CardHeader>
+          <CardHeader className='flex '>
             <CardTitle>Overview</CardTitle>
+            <small className='italic text-secondary-text'>
+              Stats of {currentYear}
+            </small>
           </CardHeader>
           <CardContent className='w-full h-full'>
             <Suspense fallback={<DashboardChartSkeleton />}>
-              <DashboardChart />
+              <DashboardChart year={currentYear} />
             </Suspense>
           </CardContent>
         </Card>
