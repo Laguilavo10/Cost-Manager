@@ -10,7 +10,7 @@ export default function GithubButton() {
   )
 }
 
-const GithubIcon = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => {
+export const GithubIcon = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       height='24'
