@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cost-Manager
 
-## Getting Started
+![Cost-Manager](public/landing.png)
 
-First, run the development server:
+Cost-Manager es una aplicación web construida con React, TypeScript, NextJS y Shadcn que te ayuda a gestionar tus finanzas personales. Con Cost-Manager, puedes realizar un seguimiento de tus ingresos y gastos, y obtener una visión clara de tu situación financiera.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Características
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Registro y seguimiento de ingresos y gastos.
+- Resumen financiero para obtener una visión general de tus finanzas.
+- Interfaz de usuario amigable y fácil de usar.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Cómo usarlo
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Para usar Cost-Manager, sigue estos pasos:
 
-## Learn More
+1. Clona este repositorio en tu máquina local con el comando `git clone https://github.com/Laguilavo10/cost-manager.git`.
+2. Navega al directorio del proyecto con `cd cost-manager`.
+3. Instala las dependencias del proyecto con `npm install`.
+4. Crea un archivo `.env` en la raíz del proyecto y configura las variables de entorno necesarias. Puedes usar el archivo `.env.example` como referencia.
+5. Inicia la aplicación con `npm run dev`. La aplicación debería estar disponible en `http://localhost:3001`.
 
-To learn more about Next.js, take a look at the following resources:
+## Contribuir
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Si estás interesado en contribuir se aceptan contribuciones de todo tipo, desde informes de errores hasta solicitudes de extracción.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Licencia
 
-## Deploy on Vercel
+Cost-Manager está licenciado bajo la [Licencia MIT](LICENSE).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contacto
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Si tienes alguna pregunta o comentario, por favor abre un problema en este repositorio o ponte en contacto con [Laguilavo10](https://github.com/Laguilavo10) en GitHub.
