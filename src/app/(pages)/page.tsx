@@ -35,14 +35,14 @@ export default function Home() {
           </Link>
         </nav>
       </header>
-      <MaxWidthWrapper className='animate-duration-[2000ms] animate-once animate-ease-in-out animate-in'>
+      <MaxWidthWrapper className='animate-duration-[2000ms] animate-once animate-ease-in-out animate-fade-up'>
         <section
           className='flex justify-center items-center  lg:pb-0'
           id='home'
         >
           <div className='w-full flex flex-col justify-center items-center text-center'>
             <div>
-              <div className='text-secondary text-sm sm:text-base  mb-6 sm:mt-32 mt-16  font-bold'>
+              <div className='text-secondary text-sm sm:text-base  mb-6 sm:mt-28 mt-16  font-bold'>
                 Manage your finances
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function Home() {
           id='features'
         >
           <div className='mx-auto'>
-            <span className='text-secondary'>Take Control of Your Finances</span>
+            <span className='text-secondary'>Dominate Your Daily Spending Habits</span>
             <h2 className='mt-6 mb-8 text-4xl lg:text-5xl custom-block-big-title'>
             A New Way to Manage Your Expenses
             </h2>
