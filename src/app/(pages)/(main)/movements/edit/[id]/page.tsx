@@ -28,12 +28,16 @@ export default function EditMovement({
   params: { id: string }
 }) {
   const [date, setDate] = useState<Date>(new Date())
-  const { data, isLoading } = useQuery(['movement_id'], async () => {
-    const response = await getMovementById(id)
-    const data: Movement = await response?.json()
-    setDate(new Date(data?.createdAt))
-    return data
-  })
+  const { data, isLoading } = useQuery(
+    ['movement_id'],
+    async () => {
+      const response = await getMovementById(id)
+      const data: Movement = await response?.json()
+      setDate(new Date(data?.createdAt))
+      return data
+    },
+    { cacheTime: 0 }
+  )
   if (isLoading) {
     return <EditMovementSkeleton />
   }
