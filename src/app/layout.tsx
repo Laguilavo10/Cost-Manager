@@ -12,7 +12,8 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Cost Manager',
   description:
-    'Servicio diseñado para simplificar el seguimiento de tus gastos diarios y ayudarte a alcanzar tus metas financieras con facilidad'
+    'Servicio diseñado para simplificar el seguimiento de tus gastos diarios y ayudarte a alcanzar tus metas financieras con facilidad',
+  manifest: '/manifest.json'
 }
 
 export default function RootLayout({
@@ -22,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' translate='no'>
-      <link rel='shortcut icon' href='./favicon.svg' type='image/x-icon' />
+      <link rel='shortcut icon' href='./icon-512x512.png' type='image' />
       <Providers>
         <body
           className={`${inter.className} bg-primary text-white dark overflow-x-hidden relative h-full w-full min-h-screen`}
