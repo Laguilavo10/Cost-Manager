@@ -25,7 +25,7 @@ import {
   type UpdateMovement
 } from '@/types.d'
 import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
 export default function EditMovement({
@@ -37,7 +37,7 @@ export default function EditMovement({
   const [isExpense, setIsExpense] = useState(false)
 
   const handleDisableCategory = (value: string) => {
-    setIsExpense(value === '2')
+    setIsExpense(value === TypeMovement.EXPENSE.toString())
   }
 
   const { data, isLoading } = useQuery(
@@ -50,6 +50,11 @@ export default function EditMovement({
     },
     { cacheTime: 0 }
   )
+  useEffect(() => {
+    if (data !== undefined) {
+      setIsExpense(data?.typeId === TypeMovement.EXPENSE)
+    }
+  }, [data])
   if (isLoading) {
     return <EditMovementSkeleton />
   }

@@ -22,8 +22,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-// import { registerMovement } from '@/services/registerMovement'
-import type { Category, MethodPayment, TypeMovement } from '@/types'
+import { type Category, type MethodPayment, TypeMovement } from '@/types.d'
 import { toast } from 'sonner'
 import { Form } from './Form'
 import postMovementAction from '@/actions/postMovementAction'
@@ -35,7 +34,7 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
   const formRef = useRef<HTMLFormElement>(null)
 
   const handleDisableCategory = (value: string) => {
-    setIsExpense(value === '2')
+    setIsExpense(value === TypeMovement.EXPENSE.toString())
   }
 
   const submitData = async (e: React.FormEvent<HTMLFormElement>) => {
