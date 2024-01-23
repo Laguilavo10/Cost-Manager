@@ -15,9 +15,10 @@ import {
 } from '@/components/ui/select'
 // import { Separator } from '@/components/ui/separator'
 import { Textarea } from '@/components/ui/textarea'
+import { CATEGORYS, METHOD } from '@/constants/const'
 import { getMovementById } from '@/services/getMovementById'
 import { type UpdateMovement } from '@/services/updateMovement'
-import { TypeMovement, type Movement, MethodPayment } from '@/types.d'
+import { TypeMovement, type Movement, MethodPayment, Category } from '@/types.d'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -47,6 +48,7 @@ export default function EditMovement({
 
   const typeMovement = TypeMovement[data?.typeId]
   const methodPayment = MethodPayment[data?.methodPaymentId]
+  const category = Category[data?.categoryId]
 
   const handleUpdate = async (evt: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(evt.target as HTMLFormElement)
@@ -57,7 +59,8 @@ export default function EditMovement({
       methodPaymentId: formData.get(
         'methodPayment'
       ) as unknown as MethodPayment,
-      description: formData.get('description') as string
+      description: formData.get('description') as string,
+      categoryId: formData.get('category') as unknown as Category
     }
     try {
       const response = await updateMovementAction(id, dataToSubmit)
@@ -85,47 +88,61 @@ export default function EditMovement({
         }}
         buttonProperties={{
           className:
-            '!bg-secondary !text-primary-text mt-5 w-full font-bold tracking-wider px-4 py-2',
+            '!bg-secondary !text-primary-text mt-5 w-full font-bold tracking-wider px-4 py-2 col-span-full',
           value: 'Register'
         }}
-        className='flex flex-col gap-4'
+        className='grid grid-cols-2 gap-5'
       >
-        <InputForm label='Date'>
+        <InputForm label='Date' className='col-span-full'>
           <DatePicker date={date} handleDate={setDate} />
         </InputForm>
         <InputForm label='Amount'>
           <Input type='number' name='amount' defaultValue={data?.value} />
         </InputForm>
-        <div className='grid grid-cols-2 gap-5'>
-          <InputForm label='Type Movement'>
-            <Select name='typeMovement' defaultValue={data?.typeId.toString()}>
-              <SelectTrigger className='w-full text-primary-text'>
-                <SelectValue placeholder={typeMovement} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='1'>Income</SelectItem>
-                <SelectItem value='2'>Expense</SelectItem>
-              </SelectContent>
-            </Select>
-          </InputForm>
-          <InputForm label='Method'>
-            <Select
-              name='methodPayment'
-              defaultValue={data?.methodPaymentId.toString()}
-            >
-              <SelectTrigger className='w-full text-primary-text'>
-                <SelectValue placeholder={methodPayment} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='2'>Cash</SelectItem>
-                <SelectItem value='3'>Credit Card</SelectItem>
-                <SelectItem value='4'>Nequi</SelectItem>
-                <SelectItem value='5'>DaviPlata</SelectItem>
-                <SelectItem value='1'>Other</SelectItem>
-              </SelectContent>
-            </Select>
-          </InputForm>
-        </div>
+        {/* <div className='grid grid-cols-2 gap-5'> */}
+        <InputForm label='Type Movement'>
+          <Select name='typeMovement' defaultValue={data?.typeId.toString()}>
+            <SelectTrigger className='w-full text-primary-text'>
+              <SelectValue placeholder={typeMovement} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value='1'>Income</SelectItem>
+              <SelectItem value='2'>Expense</SelectItem>
+            </SelectContent>
+          </Select>
+        </InputForm>
+        <InputForm label='Category'>
+          <Select name='category' defaultValue={data?.categoryId.toString()}>
+            <SelectTrigger className='w-full text-primary-text'>
+              <SelectValue placeholder={category} />
+            </SelectTrigger>
+            <SelectContent>
+              {CATEGORYS.map(({ id, value }) => (
+                <SelectItem key={id} value={id.toString()}>
+                  {value}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </InputForm>
+        <InputForm label='Method'>
+          <Select
+            name='methodPayment'
+            defaultValue={data?.methodPaymentId.toString()}
+          >
+            <SelectTrigger className='w-full text-primary-text'>
+              <SelectValue placeholder={methodPayment} />
+            </SelectTrigger>
+            <SelectContent>
+              {METHOD.map(({ id, value }) => (
+                <SelectItem key={id} value={id.toString()}>
+                  {value}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </InputForm>
+        {/* </div> */}
         <InputForm label='Description' className='col-span-2'>
           <Textarea
             placeholder='Type a description here.'

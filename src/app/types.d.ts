@@ -30,7 +30,7 @@ export interface Movement {
   description: string
   value: number
   methodPaymentId: MethodPayment
-  category: Category
+  categoryId: Category
 }
 
 export interface Balance {

@@ -18,7 +18,8 @@ export const updateMovement = async (
           typeId: newData.typeId,
           description: newData.description,
           value: newData.value,
-          methodPaymentId: newData.methodPaymentId
+          methodPaymentId: newData.methodPaymentId,
+          categoryId: newData.categoryId
         })
       }
     })
