@@ -19,7 +19,7 @@ export default async function RecentSales() {
   const response = await getMovements(LIMIT)
   const data: Movement[] = await response?.json()
   return (
-    <Card className='col-span-4 md:col-span-3 max-h-[450px] overflow-y-auto'>
+    <Card className='col-span-4 md:col-span-3 max-h-[470px] overflow-y-auto'>
       <ScrollArea className='h-full rounded-md border p-4'>
         <CardHeader>
           <CardTitle className='flex w-full justify-between'>

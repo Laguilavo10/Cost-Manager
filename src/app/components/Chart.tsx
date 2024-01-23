@@ -13,7 +13,7 @@ export default function Chart({ data }: { data: any[] }) {
       categories={['earnings', 'expenses']}
       colors={['green', 'red']}
       animationDuration={500}
-      yAxisWidth={48}
+      yAxisWidth={80}
       valueFormatter={formatNumberAsCurrency}
       showAnimation
     />
