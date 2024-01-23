@@ -31,7 +31,12 @@ import { CATEGORYS, METHOD } from '@/constants/const'
 
 export default function NewMovement({ children }: React.PropsWithChildren) {
   const [date, setDate] = useState(new Date())
+  const [isExpense, setIsExpense] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
+
+  const handleDisableCategory = (value: string) => {
+    setIsExpense(value === '2')
+  }
 
   const submitData = async (e: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(e.target as HTMLFormElement)
@@ -84,7 +89,10 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
                 <Input type='number' name='amount' />
               </InputForm>
               <InputForm label='Type Movement' className='col-span-full'>
-                <Select name='typeMovement'>
+                <Select
+                  name='typeMovement'
+                  onValueChange={handleDisableCategory}
+                >
                   <SelectTrigger className='w-full text-primary-text'>
                     <SelectValue placeholder='Type' />
                   </SelectTrigger>
@@ -95,7 +103,7 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
                 </Select>
               </InputForm>
               <InputForm label='Category'>
-                <Select name='category'>
+                <Select name='category' disabled={!isExpense}>
                   <SelectTrigger className='w-full text-primary-text'>
                     <SelectValue placeholder='Category' />
                   </SelectTrigger>

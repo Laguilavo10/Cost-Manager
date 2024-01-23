@@ -34,6 +34,12 @@ export default function EditMovement({
   params: { id: string }
 }) {
   const [date, setDate] = useState<Date>(new Date())
+  const [isExpense, setIsExpense] = useState(false)
+
+  const handleDisableCategory = (value: string) => {
+    setIsExpense(value === '2')
+  }
+
   const { data, isLoading } = useQuery(
     ['movement_id'],
     async () => {
@@ -106,7 +112,11 @@ export default function EditMovement({
         </InputForm>
         {/* <div className='grid grid-cols-2 gap-5'> */}
         <InputForm label='Type Movement'>
-          <Select name='typeMovement' defaultValue={data?.typeId.toString()}>
+          <Select
+            name='typeMovement'
+            defaultValue={data?.typeId.toString()}
+            onValueChange={handleDisableCategory}
+          >
             <SelectTrigger className='w-full text-primary-text'>
               <SelectValue placeholder={typeMovement} />
             </SelectTrigger>
@@ -117,7 +127,11 @@ export default function EditMovement({
           </Select>
         </InputForm>
         <InputForm label='Category'>
-          <Select name='category' defaultValue={data?.categoryId.toString()}>
+          <Select
+            name='category'
+            defaultValue={data?.categoryId?.toString() ?? ''}
+            disabled={!isExpense}
+          >
             <SelectTrigger className='w-full text-primary-text'>
               <SelectValue placeholder={category} />
             </SelectTrigger>

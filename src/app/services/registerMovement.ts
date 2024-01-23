@@ -25,7 +25,6 @@ export const registerMovement = async ({
         })
       }
     })
-    console.log()
     return response
   } catch (error) {
     console.log(error)
