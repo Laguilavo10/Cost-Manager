@@ -24,21 +24,20 @@ export default function Movements({
   searchParams: { year: string }
 }) {
   const currentYear = new Date().getFullYear()
-  const date = year === undefined || year === currentYear.toString() ? new Date() : new Date(Number(year), 0)
+  const date =
+    year === undefined || year === currentYear.toString()
+      ? new Date()
+      : new Date(Number(year), 0)
   return (
     <>
       <span className='mb-5 flex justify-end '>
         <YearPicker />
       </span>
-      <div
-        className='grid lg:grid-cols-4 md:grid-cols-3 justify-center gap-3'
-      >
+      <div className='grid lg:grid-cols-4 md:grid-cols-3 justify-center gap-3'>
         {months.map((_, index) => {
           return (
             <Link
-              href={`/movements/month/${
-                index + 1
-              }?year=${date.getFullYear()}`}
+              href={`/movements/month/${index + 1}?year=${date.getFullYear()}`}
               className={cn(
                 'relative overflow-x-hidden cursor-pointer',
                 date.getMonth() === index &&
@@ -54,7 +53,10 @@ export default function Movements({
                 disableNavigation
                 showOutsideDays={false}
                 month={new Date(Date.UTC(date.getFullYear(), index + 1))}
-                className='border-secondary/20 border rounded-sm'
+                className={cn({
+                  'border-secondary/20 border rounded-sm':
+                    date.getMonth() !== index
+                })}
               />
             </Link>
           )
