@@ -9,22 +9,23 @@ export default function EditMovementSkeleton() {
         <GoBack />
         <Skeleton className='w-2/5' />
       </div>
-      <form className='flex flex-col gap-4'>
-        <InputForm label='Date'>
+      <div className='grid grid-cols-2 gap-5'>
+        <InputForm label='Date' className='col-span-full'>
           <Skeleton className='w-full h-10' />
         </InputForm>
         <InputForm label='Amount'>
           <Skeleton className='w-full h-10' />
         </InputForm>
-        <div className='grid grid-cols-2 gap-5'>
-          <InputForm label='Type Movement'>
-            <Skeleton className='w-full h-10' />
-          </InputForm>
-          <InputForm label='Method'>
-            <Skeleton className='w-full h-10' />
-          </InputForm>
-        </div>
-        <InputForm label='Description' className='col-span-2'>
+        <InputForm label='Type Movement'>
+          <Skeleton className='w-full h-10' />
+        </InputForm>
+        <InputForm label='Category'>
+          <Skeleton className='w-full h-10' />
+        </InputForm>
+        <InputForm label='Method'>
+          <Skeleton className='w-full h-10' />
+        </InputForm>
+        <InputForm label='Description' className='col-span-full'>
           <Skeleton className='w-full h-24' />
         </InputForm>
         <button
@@ -33,7 +34,7 @@ export default function EditMovementSkeleton() {
         >
           Register
         </button>
-      </form>
+      </div>
     </section>
   )
 }
