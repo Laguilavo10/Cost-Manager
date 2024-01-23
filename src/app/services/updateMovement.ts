@@ -1,8 +1,6 @@
 import { Fetch } from '@/lib/Fetch'
-import type { Movement } from '@/types'
+import type { Movement, UpdateMovement } from '@/types'
 
-export interface UpdateMovement
-  extends Omit<Movement, 'idMovement' | 'userId'> {}
 export const updateMovement = async (
   idMovement: Movement['idMovement'],
   newData: UpdateMovement

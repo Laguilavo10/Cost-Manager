@@ -50,3 +50,6 @@ export interface NewMovement {
   methodPayment: MethodPayment
   category: Category
 }
+
+export interface UpdateMovement
+  extends Omit<Movement, 'idMovement' | 'userId'> {}

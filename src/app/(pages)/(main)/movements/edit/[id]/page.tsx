@@ -17,8 +17,13 @@ import {
 import { Textarea } from '@/components/ui/textarea'
 import { CATEGORYS, METHOD } from '@/constants/const'
 import { getMovementById } from '@/services/getMovementById'
-import { type UpdateMovement } from '@/services/updateMovement'
-import { TypeMovement, type Movement, MethodPayment, Category } from '@/types.d'
+import {
+  TypeMovement,
+  type Movement,
+  MethodPayment,
+  Category,
+  type UpdateMovement
+} from '@/types.d'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { toast } from 'sonner'

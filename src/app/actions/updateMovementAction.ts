@@ -1,8 +1,7 @@
 'use server'
 
-import { updateMovement, type UpdateMovement } from '@/services/updateMovement'
-// import { registerMovement } from '@/services/registerMovement'
-import type { Movement } from '@/types'
+import { updateMovement } from '@/services/updateMovement'
+import type { Movement, UpdateMovement } from '@/types'
 import { revalidateTag } from 'next/cache'
 
 export async function updateMovementAction(
