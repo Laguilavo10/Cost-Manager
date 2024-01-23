@@ -23,10 +23,11 @@ import {
   SelectValue
 } from '@/components/ui/select'
 // import { registerMovement } from '@/services/registerMovement'
-import type { MethodPayment, TypeMovement } from '@/types'
+import type { Category, MethodPayment, TypeMovement } from '@/types'
 import { toast } from 'sonner'
 import { Form } from './Form'
 import postMovementAction from '@/actions/postMovementAction'
+import { CATEGORYS, METHOD } from '@/constants/const'
 
 export default function NewMovement({ children }: React.PropsWithChildren) {
   const [date, setDate] = useState(new Date())
@@ -40,7 +41,8 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
       amount: Number(formData.get('amount')),
       typeMovement: formData.get('typeMovement') as unknown as TypeMovement,
       methodPayment: formData.get('methodPayment') as unknown as MethodPayment,
-      description: formData.get('description') as string
+      description: formData.get('description') as string,
+      category: formData.get('category') as unknown as Category
     }
     try {
       const response = await postMovementAction(dataToSubmit)
@@ -58,7 +60,6 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
       toast.error('Ha ocurrido un error')
     }
   }
-
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -82,7 +83,7 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
               <InputForm label='Amount'>
                 <Input type='number' name='amount' />
               </InputForm>
-              <InputForm label='Type Movement'>
+              <InputForm label='Type Movement' className='col-span-full'>
                 <Select name='typeMovement'>
                   <SelectTrigger className='w-full text-primary-text'>
                     <SelectValue placeholder='Type' />
@@ -93,17 +94,31 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
                   </SelectContent>
                 </Select>
               </InputForm>
+              <InputForm label='Category'>
+                <Select name='category'>
+                  <SelectTrigger className='w-full text-primary-text'>
+                    <SelectValue placeholder='Category' />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {CATEGORYS.map(({ id, value }) => (
+                      <SelectItem key={id} value={id.toString()}>
+                        {value}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </InputForm>
               <InputForm label='Method'>
                 <Select name='methodPayment'>
                   <SelectTrigger className='w-full text-primary-text'>
                     <SelectValue placeholder='Method' />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value='2'>Cash</SelectItem>
-                    <SelectItem value='3'>Credit Card</SelectItem>
-                    <SelectItem value='4'>Nequi</SelectItem>
-                    <SelectItem value='5'>DaviPlata</SelectItem>
-                    <SelectItem value='1'>Other</SelectItem>
+                    {METHOD.map(({ id, value }) => (
+                      <SelectItem key={id} value={id.toString()}>
+                        {value}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </InputForm>

@@ -1,7 +1,7 @@
 'use server'
 
 import { registerMovement } from '@/services/registerMovement'
-import type { MethodPayment, TypeMovement } from '@/types'
+import type { NewMovement } from '@/types'
 import { revalidateTag } from 'next/cache'
 
 export default async function postMovementAction({
@@ -9,21 +9,17 @@ export default async function postMovementAction({
   typeMovement,
   description,
   amount,
-  methodPayment
-}: {
-  date?: Date
-  typeMovement: TypeMovement
-  description: string
-  amount: number
-  methodPayment: MethodPayment
-}) {
+  methodPayment,
+  category
+}: NewMovement) {
   try {
     const response = await registerMovement({
       date,
       amount,
       typeMovement,
       methodPayment,
-      description
+      description,
+      category
     })
 
     revalidateTag('Movements')

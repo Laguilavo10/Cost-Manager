@@ -11,6 +11,17 @@ export enum MethodPayment {
   DAVIPLATA = 5
 }
 
+export enum Category {
+  OTHERS = 1,
+  FOOD = 2,
+  HOUSING = 3,
+  TRANSPORTATION = 4,
+  ENTERTAINMENT = 5,
+  HEALTH = 6,
+  EDUCATION = 7,
+  CLOTHING = 8
+}
+
 export interface Movement {
   idMovement: string
   userId: string
@@ -19,6 +30,7 @@ export interface Movement {
   description: string
   value: number
   methodPaymentId: MethodPayment
+  category: Category
 }
 
 export interface Balance {
@@ -28,4 +40,13 @@ export interface Balance {
   year: number
   earnings?: number
   expenses?: number
+}
+
+export interface NewMovement {
+  date?: Date
+  typeMovement: TypeMovement
+  description: string
+  amount: number
+  methodPayment: MethodPayment
+  category: Category
 }

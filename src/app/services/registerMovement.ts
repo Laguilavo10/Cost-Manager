@@ -1,18 +1,14 @@
 import { Fetch } from '@/lib/Fetch'
-import type { TypeMovement, MethodPayment } from '@/types'
+import type { NewMovement } from '@/types'
+
 export const registerMovement = async ({
   date,
   typeMovement,
   description,
   amount,
-  methodPayment
-}: {
-  date?: Date
-  typeMovement: TypeMovement
-  description: string
-  amount: number
-  methodPayment: MethodPayment
-}) => {
+  methodPayment,
+  category
+}: NewMovement) => {
   try {
     const END_POINT = '/movement'
     const response = await Fetch({
@@ -24,11 +20,12 @@ export const registerMovement = async ({
           typeMovement,
           description,
           amount,
-          methodPayment
+          methodPayment,
+          category
         })
       }
     })
-
+    console.log()
     return response
   } catch (error) {
     console.log(error)
