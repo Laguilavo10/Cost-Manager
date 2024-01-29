@@ -22,5 +22,5 @@
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-confusing-void-expression": "off"
   },
-  "ignorePatterns": ["next.config.js"]
+  "ignorePatterns": ["**/ui/*", "next.config.js"]
 }
