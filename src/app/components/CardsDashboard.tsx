@@ -8,7 +8,7 @@ import { formatNumberAsCurrency } from '@/lib/formatNumberAsCurrency'
 
 interface Props {
   title: string
-  svg: React.ReactNode
+  svg?: React.ReactNode
   value: string | number
   description?: string
   color?: string
@@ -27,7 +27,7 @@ export default function CardsDashboard({
         <div className='ml-3 w-4 h-4 text-secondary-text'>{svg}</div>
       </CardHeader>
       <CardContent>
-        <div className='text-2xl font-bold'>{formatNumberAsCurrency(value)}</div>
+        <div className='text-2xl font-bold'>{formatNumberAsCurrency(value ?? 0)}</div>
         <p className='text-xs text-secondary-text'>
           {description}
         </p>

@@ -53,3 +53,16 @@ export interface NewMovement {
 
 export interface UpdateMovement
   extends Omit<Movement, 'idMovement' | 'userId'> {}
+
+export interface CategoryPerUser {
+  userId: string
+  categoryId: number
+  limit: number
+}
+
+export interface CategoriesAmounts {
+  userId: string
+  categoryId: number
+  amount: number
+  limit: number | null
+}
