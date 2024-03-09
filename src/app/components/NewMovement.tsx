@@ -27,19 +27,20 @@ import { toast } from 'sonner'
 import { Form } from './Form'
 import postMovementAction from '@/actions/postMovementAction'
 import { CATEGORYS, METHOD } from '@/constants/const'
+import { getTimezoneOffset } from 'date-fns-tz'
 
 export default function NewMovement({ children }: React.PropsWithChildren) {
-  const [date, setDate] = useState(new Date())
+  const utcDate = new Date().getTime()
+  const offsetDate = getTimezoneOffset('America/Bogota', new Date())
+  const [date, setDate] = useState(new Date(offsetDate + utcDate))
   const [isExpense, setIsExpense] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
 
   const handleDisableCategory = (value: string) => {
     setIsExpense(value === TypeMovement.EXPENSE.toString())
   }
-
   const submitData = async (e: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(e.target as HTMLFormElement)
-
     const dataToSubmit = {
       date: new Date(date),
       amount: Number(formData.get('amount')),
