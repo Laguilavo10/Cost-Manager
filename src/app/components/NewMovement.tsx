@@ -5,7 +5,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  // dialogClose,
+  dialogClose,
   DialogTrigger
 } from '@/components/ui/dialog'
 import { Separator } from './ui/separator'
@@ -59,7 +59,7 @@ export default function NewMovement({ children }: React.PropsWithChildren) {
       toast.success('Movimiento registrado correctamente')
       formRef.current?.reset()
       // setDate(new Date())
-      // dialogClose()
+      dialogClose()
     } catch (error) {
       console.log(error)
       toast.error('Ha ocurrido un error')
